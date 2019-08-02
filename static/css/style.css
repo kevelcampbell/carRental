@@ -1,0 +1,13 @@
+.homeCarousel{
+    height: 90vh;
+}
+.carouselForm{
+    width: 50%;
+    padding: 10px;
+    position: absolute;
+    top: 45vh;
+    margin: auto;
+    z-index: 1;
+    left: 50%;
+    transform: translate(-50%);
+}
