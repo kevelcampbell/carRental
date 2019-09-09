@@ -1,25 +1,27 @@
 import graphene
 from graphene.relay import Node
 from graphene_mongo import MongoengineConnectionField, MongoengineObjectType
-from .models import Vehicle as VehicleModel
-from .models import Person as PersonModel
-from .models import Rental as RentalModel
+from models import Vehicle as VehicleModel
+from models import Person as PersonModel
+from models import Rental as RentalModel
 
 class Vehicle(MongoengineObjectType):
-    class meta:
+
+    class Meta:
         model = VehicleModel
         interfaces = (Node,)
 
 class Person(MongoengineObjectType):
-    class meta:
+
+    class Meta:
         model = PersonModel
         interfaces = (Node,)
 
 class Rental(MongoengineObjectType):
-    class meta:
+
+    class Meta:
         model = RentalModel
         interfaces = (Node,)
-
 
 class Query(graphene.ObjectType):
     node = Node.Field()
