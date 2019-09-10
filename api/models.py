@@ -1,29 +1,34 @@
 from datetime import datetime
 from bson.objectid import ObjectId
-from mongoengine import Document
+from mongoengine import Document, EmbeddedDocument
 from mongoengine.fields import (
     DateTimeField, ReferenceField, StringField, ObjectIdField
     , FileField, DateField, DecimalField, IntField, ListField, 
-    EmailField, LazyReferenceField, ImageField
+    EmailField, LazyReferenceField, ImageField, EmbeddedDocumentListField
 )
+
+
+class uploadedImages(EmbeddedDocument):
+    meta={'collection':'images'}
+    photos = ImageField(thumbnail_size=(150, 150, True))
+
 
 class Vehicle(Document):
     meta={'collection':'vehicle'}
     vehicle_id = ObjectIdField(primary_key=True,required=True, default=ObjectId)
-    photos = ListField(ImageField(thumbnail_size=(150, 150, True)))
+    photos = EmbeddedDocumentListField(uploadedImages)
     model = StringField()
     make = StringField()
     year = DateField()
-    # owner = mongoengine.ListField(LazyReferenceField(Person))
     owner_id = ObjectIdField()
     transmission_type = StringField()
     Description = StringField()
-    Price = DecimalField(required=True)
+    Price = DecimalField(required=True)   
 
 class Person(Document):
     meta={'collection':'person'}
     pid = ObjectIdField(primary_key=True,required=True, default=ObjectId)
-    photo_id = ImageField(thumbnail_size=(150, 150, True))
+    photo_id = FileField(collection_name='images')
     name = StringField()
     age = IntField()
     dob = DateField()

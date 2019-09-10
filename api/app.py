@@ -12,10 +12,9 @@ default_query = '''
     edges {
       node {
         id,
-        name,
         Vehicle {
           id,
-          name
+          make
         }
       }
     }
