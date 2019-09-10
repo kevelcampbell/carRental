@@ -32,7 +32,7 @@ class Person(Document):
     name = StringField()
     age = IntField()
     dob = DateField()
-    memeber_since = DateTimeField(default=datetime.now) 
+    member_since = DateTimeField(default=datetime.now) 
     Description = StringField()
     lot_num = IntField(required=True)
     Street_name = StringField(required=True)
