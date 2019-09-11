@@ -44,14 +44,14 @@ class Person(Document):
     Language = ListField(StringField())
     Number_of_rentals = IntField()
     Rating = DecimalField()
-    vehicles_owned = ListField(LazyReferenceField(Vehicle), default=list)
+    # vehicles_owned = ListField(LazyReferenceField(Vehicle), default=list)
 
 class Rental(Document):
     meta={'collection':'rental'}
-    rental_id = ObjectIdField(Primary_key=True,required=True,unique=True, default=ObjectId)
+    rental_id = ObjectIdField(Primary_key=True,required=True, default=ObjectId)
     start_date = DateField(required=True)
     end_date = DateField(required=True)
-    owner_id = LazyReferenceField(Person,required=True)
+    # owner_id = LazyReferenceField(Person,required=True)
     renter_id = LazyReferenceField(Person,required=True)
     vehicle_id = LazyReferenceField(Vehicle,required=True)
     lot_num = IntField(required=True)
