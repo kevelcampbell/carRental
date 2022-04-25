@@ -1,5 +1,10 @@
 body {
   font-size: 14px;
-  background-color: lightblue;
+  background-color: white;
 }
-/*# sourceMappingURL=main.css.map */
+.category{
+  height: 14em;
+  width: 20em;
+  margin: 4em;
+  text-align: center;
+}
